@@ -8,7 +8,7 @@ This awscli plugin provides service endpoint configure on profile.
 Installation
 ------------
 
-The easiest way to install awscli-plugin-endpoint is to use `pip`_::
+The easiest way to install awscli-plugin-endpoint is to use `pip`::
 
     $ pip install awscli-plugin-endpoint
 
