@@ -2,7 +2,7 @@
 awscli-plugin-endpoint
 =============
 
-This awscli plugin provides endpoint configure per service for profile
+This awscli plugin provides service endpoint configure on profile.
 
 ------------
 Installation
