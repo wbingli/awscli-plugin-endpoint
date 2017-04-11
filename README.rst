@@ -52,6 +52,13 @@ The above command adds below section to your profile::
     dynamodb =
         endpoint_url = http://localhost:8000
 
+Now you can access your local dynamodb just use profile::
+
+    $ aws dynamodb list-tables --profile local
+
+
+verify_ssl Support
+------------------
 To allow insecure/self-signed ssl certificates::
 
     [profile local]
@@ -62,9 +69,3 @@ To allow insecure/self-signed ssl certificates::
 To disable Unverified HTTPS request warning, export::
 
     export PYTHONWARNINGS="ignore:Unverified HTTPS request"
-
-Now you can access your local dynamodb just use profile::
-
-    $ aws dynamodb list-tables --profile local
-
-
