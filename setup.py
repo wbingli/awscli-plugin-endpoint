@@ -7,7 +7,7 @@ requires = ['awscli>=1.11.0']
 setup(
     name='awscli-plugin-endpoint',
     packages=['awscli_plugin_endpoint'],
-    version='0.1',
+    version='0.2',
     description='Endpoint plugin for AWS CLI',
     long_description=open('README.rst').read(),
     author='Bruce Li',
