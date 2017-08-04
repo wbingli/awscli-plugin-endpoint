@@ -2,7 +2,7 @@
 awscli-plugin-endpoint
 =============
 
-This awscli plugin provides service endpoint configure on profile.
+This awscli plugin provides service endpoint configure **per service** on profile.
 
 ------------
 Installation
@@ -12,20 +12,10 @@ The easiest way to install awscli-plugin-endpoint is to use `pip`::
 
     $ pip install awscli-plugin-endpoint
 
-or, if you are not installing in a ``virtualenv``::
-
-    $ sudo pip install awscli-plugin-endpoint
-
 or, if you install `awscli` via Homebrew, which bundles its own python, install as following::
 
     $ /usr/local/opt/awscli/libexec/bin/pip install awscli-plugin-endpoint
 
-If you have the awscli-plugin-endpoint installed and want to upgrade to the latest version
-you can run::
-
-    $ pip install --upgrade awscli-plugin-endpoint
-
-This will install the awscli-plugin-endpoint package as well as all dependencies, including awscli.
 
 ---------------
 Getting Started
@@ -56,8 +46,38 @@ Now you can access your local dynamodb just use profile::
 
     $ aws dynamodb list-tables --profile local
 
+### One more example with wasabi S3 configuration
 
-verify_ssl Support
+Add endpoint configuration to the profile:
+
+    $ aws configure --profile wasabi set s3.endpoint_url https://s3.wasabisys.com
+
+The profile will looks like below:
+
+    [profile wasabi]
+    region = us-east-1
+    s3 =
+        endpoint_url = https://s3.wasabisys.com
+
+Now you can use `aws s3` command with this profile as following:
+
+    $ aws s3 ls --profile wasabi
+
+One more thing, the endpoint is technically per **sub command**. Take S3 as example, above S3 configuration will not work for S3 low level CLI `aws s3api`.  To make `s3api` work with this endpoint, you should add endpoint to this sub command as well:
+
+    [profile wasabi]
+    region = us-east-1
+    s3 =
+        endpoint_url = https://s3.wasabisys.com
+    s3api =
+        endpoint_url = https://s3.wasabisys.com
+
+Now you can use `aws s3api` command with this profile as following:
+
+    $ aws s3api --profile wasabi list-buckets
+
+
+`verify_ssl` Support
 ------------------
 To allow insecure/self-signed ssl certificates::
 
