@@ -1,4 +1,3 @@
-=============
 awscli-plugin-endpoint
 =============
 
@@ -8,7 +7,7 @@ This awscli plugin provides service endpoint configure **per service** on profil
 Installation
 ------------
 
-The easiest way to install awscli-plugin-endpoint is to use `pip`::
+The easiest way to install awscli-plugin-endpoint is to use `pip`:
 
     $ pip install awscli-plugin-endpoint
 
@@ -21,18 +20,18 @@ or, if you install `awscli` via Homebrew, which bundles its own python, install 
 Getting Started
 ---------------
 
-Before using awscli-plugin-endpoint plugin, you need to `configure awscli <http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html>`__ first.
+Before using awscli-plugin-endpoint plugin, you need to [configure awscli](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) first.
 
-Once that's done, to enable awscli-plugin-endpoint, you can run::
+**MUST**: Once that's done, to enable `awscli-plugin-endpoint` plugin, you can run:
 
     $ aws configure set plugins.endpoint awscli_plugin_endpoint
 
-The above command adds below section to your aws config file::
+The above command adds below section to your aws config file. You can also directly edit your `~/.aws/config` with below configuration.
 
     [plugins]
     endpoint = awscli_plugin_endpoint
 
-To add endpoint configure to a profile(assuming you have a **local** profile), you can run::
+To add endpoint configure to a profile(assuming you have a **local** profile), you can run:
 
     $ aws configure --profile local set dynamodb.endpoint_url http://localhost:8000
 
@@ -46,7 +45,7 @@ Now you can access your local dynamodb just use profile::
 
     $ aws dynamodb list-tables --profile local
 
-### One more example with wasabi S3 configuration
+## One more example with S3 configuration
 
 Add endpoint configuration to the profile:
 
