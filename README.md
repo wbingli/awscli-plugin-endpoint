@@ -11,7 +11,7 @@ The easiest way to install awscli-plugin-endpoint is to use `pip`:
 
     $ pip install awscli-plugin-endpoint
 
-or, if you install `awscli` via Homebrew, which bundles its own python, install as following::
+or, if you install `awscli` via Homebrew, which bundles its own python, install as following:
 
     $ /usr/local/opt/awscli/libexec/bin/pip install awscli-plugin-endpoint
 
@@ -35,13 +35,13 @@ To add endpoint configure to a profile(assuming you have a **local** profile), y
 
     $ aws configure --profile local set dynamodb.endpoint_url http://localhost:8000
 
-The above command adds below section to your profile::
+The above command adds below section to your profile:
 
     [profile local]
     dynamodb =
         endpoint_url = http://localhost:8000
 
-Now you can access your local dynamodb just use profile::
+Now you can access your local dynamodb just use profile:
 
     $ aws dynamodb list-tables --profile local
 
@@ -78,13 +78,13 @@ Now you can use `aws s3api` command with this profile as following:
 
 `verify_ssl` Support
 ------------------
-To allow insecure/self-signed ssl certificates::
+To allow insecure/self-signed ssl certificates:
 
     [profile local]
     dynamodb =
         verify_ssl = false
         endpoint_url = https://localhost:8000
 
-To disable Unverified HTTPS request warning, export::
+To disable Unverified HTTPS request warning, export:
 
     export PYTHONWARNINGS="ignore:Unverified HTTPS request"
