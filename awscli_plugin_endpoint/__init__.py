@@ -1,5 +1,6 @@
 ENDPOINT_URL = 'endpoint_url'
 VERIFY_SSL = 'verify_ssl'
+CA_BUNDLE = 'ca_bundle'
 
 def str2bool(value):
     return str(value).lower() in ['1', 'yes', 'y', 'true', 'on']
@@ -10,6 +11,9 @@ def get_verify_from_profile(profile, command):
         if VERIFY_SSL in profile[command]:
             verify = str2bool(profile[command][VERIFY_SSL])
     return verify
+
+def get_ca_bundle_from_profile(profile, command):
+    return profile.get(command, {}).get(CA_BUNDLE)
 
 def get_endpoint_from_profile(profile, command):
     endpoint = None
@@ -46,6 +50,19 @@ def set_verify_from_profile(parsed_args, **kwargs):
         if service_verify is not None:
             parsed_args.verify_ssl = service_verify
 
+def set_ca_bundle_from_profile(parsed_args, **kwargs):
+    # Respect command line arg if present
+    if parsed_args.ca_bundle:
+        return
+
+    command = parsed_args.command
+    session = kwargs['session']
+    # Set profile to session so we can load profile from config
+    if parsed_args.profile:
+        session.set_config_variable('profile', parsed_args.profile)
+    parsed_args.ca_bundle = get_ca_bundle_from_profile(session.get_scoped_config(), command)
+
 def awscli_initialize(cli):
     cli.register('top-level-args-parsed', set_endpoint_from_profile)
     cli.register('top-level-args-parsed', set_verify_from_profile)
+    cli.register('top-level-args-parsed', set_ca_bundle_from_profile)
