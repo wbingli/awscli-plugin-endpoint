@@ -11,6 +11,10 @@ The easiest way to install awscli-plugin-endpoint is to use `pip`:
 
     $ pip install awscli-plugin-endpoint
 
+You can also install the latest package from GitHub source which can contain changes not yet pushed to PyPI:
+
+    $ pip install git+https://github.com/wbingli/awscli-plugin-endpoint.git
+
 or, if you install `awscli` via Homebrew, which bundles its own python, install as following:
 
     $ /usr/local/opt/awscli/libexec/bin/pip install awscli-plugin-endpoint
@@ -79,7 +83,7 @@ Now you can use `aws s3api` command with this profile as following:
 Working with Secure Connections
 ------------------
 By default, awscli verifies the certificates presented for all HTTPS requests.
-There are two options for working with self-signed or otherwise untrusted 
+There are two options for working with self-signed or otherwise untrusted
 certificates:
 
 * `ca_bundle`

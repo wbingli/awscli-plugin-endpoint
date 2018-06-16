@@ -11,9 +11,9 @@ setup(
     description='Endpoint plugin for AWS CLI',
     long_description=open('README.md').read(),
     author='Wenbing Li',
-    author_email='wbinglee@gmail.com',
-    url='https://github.com/wbinglee/awscli-plugin-endpoint',
-    download_url='https://github.com/wbinglee/awscli-plugin-endpoint/tarball/0.3',
+    author_email='wbingli@gmail.com',
+    url='https://github.com/wbingli/awscli-plugin-endpoint',
+    download_url='https://github.com/wbingli/awscli-plugin-endpoint/tarball/0.3',
     keywords=['awscli', 'plugin', 'endpoint'],
     install_requires=requires,
     classifiers = []
