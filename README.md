@@ -84,7 +84,3 @@ To allow insecure/self-signed ssl certificates:
     dynamodb =
         verify_ssl = false
         endpoint_url = https://localhost:8000
-
-To disable Unverified HTTPS request warning, export:
-
-    export PYTHONWARNINGS="ignore:Unverified HTTPS request"

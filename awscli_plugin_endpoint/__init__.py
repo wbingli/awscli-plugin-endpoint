@@ -1,3 +1,5 @@
+import warnings
+
 ENDPOINT_URL = 'endpoint_url'
 VERIFY_SSL = 'verify_ssl'
 
@@ -45,6 +47,8 @@ def set_verify_from_profile(parsed_args, **kwargs):
         service_verify = get_verify_from_profile(session.get_scoped_config(), command)
         if service_verify is not None:
             parsed_args.verify_ssl = service_verify
+            if not service_verify:
+                warnings.filterwarnings('ignore', 'Unverified HTTPS request')
 
 def awscli_initialize(cli):
     cli.register('top-level-args-parsed', set_endpoint_from_profile)
