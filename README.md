@@ -111,7 +111,4 @@ certificates:
           verify_ssl = false
           endpoint_url = https://localhost:8000
 
-  Even with `verify_ssl = false`, urllib3 will display warnings about the use of
-  insecure requests. To suppress these warnings, export:
 
-      export PYTHONWARNINGS="ignore:Unverified HTTPS request"

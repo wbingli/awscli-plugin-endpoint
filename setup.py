@@ -9,7 +9,7 @@ setup(
     packages=['awscli_plugin_endpoint'],
     version='0.2',
     description='Endpoint plugin for AWS CLI',
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
     author='Bruce Li',
     author_email='wbinglee@gmail.com',
     url='https://github.com/wbinglee/awscli-plugin-endpoint',
