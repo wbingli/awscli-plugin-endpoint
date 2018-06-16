@@ -76,11 +76,39 @@ Now you can use `aws s3api` command with this profile as following:
     $ aws s3api --profile wasabi list-buckets
 
 
-`verify_ssl` Support
+Working with Secure Connections
 ------------------
-To allow insecure/self-signed ssl certificates:
+By default, awscli verifies the certificates presented for all HTTPS requests.
+There are two options for working with self-signed or otherwise untrusted 
+certificates:
 
-    [profile local]
-    dynamodb =
-        verify_ssl = false
-        endpoint_url = https://localhost:8000
+* `ca_bundle`
+
+  If the certificate is long-lived, or any new certificates will be issued by
+  a long-lived certificate authority, you may want to provide an alternate
+  set of trusted certificates with `ca_bundle`. This is comparable to the
+  `--ca-bundle` command line option, and may be specified either per-profile
+  or per-subcommand:
+
+      [profile local1]
+      ca_bundle = /path/to/bundle.crt
+      s3 =
+          endpoint_url = https://localhost:8000
+
+      [profile local2]
+      ec2 =
+          ca_bundle = /path/to/another-bundle.crt
+          endpoint_url = https://localhost:8888
+
+* `verify_ssl`
+
+  If the certificate will be frequently refreshed, you may want to simply
+  disable verification with `verify_ssl = false`. This is comparable to the
+  `--no-verify-ssl` command line option:
+
+      [profile local]
+      dynamodb =
+          verify_ssl = false
+          endpoint_url = https://localhost:8000
+
+
