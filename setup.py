@@ -10,6 +10,7 @@ setup(
     version='0.3',
     description='Endpoint plugin for AWS CLI',
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     author='Wenbing Li',
     author_email='wbingli@gmail.com',
     url='https://github.com/wbingli/awscli-plugin-endpoint',
