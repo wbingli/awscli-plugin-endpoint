@@ -14,7 +14,7 @@ setup(
     author='Wenbing Li',
     author_email='wbingli@gmail.com',
     url='https://github.com/wbingli/awscli-plugin-endpoint',
-    download_url='https://github.com/wbingli/awscli-plugin-endpoint/tarball/0.3',
+    download_url='https://github.com/wbingli/awscli-plugin-endpoint/tarball/0.4',
     keywords=['awscli', 'plugin', 'endpoint'],
     install_requires=requires,
     classifiers = []
