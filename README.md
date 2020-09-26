@@ -19,6 +19,7 @@ or, if you install `awscli` via Homebrew, which bundles its own python, install 
 
     $ /usr/local/opt/awscli/libexec/bin/pip install awscli-plugin-endpoint
 
+Regardless of the installation method, make note of the package installation path (e.g. `~/Library/Python/3.7/lib/python/site-packages`). It will be needed if you are using AWS CLI v2.
 
 ---------------
 Getting Started
@@ -34,6 +35,16 @@ The above command adds below section to your aws config file. You can also direc
 
     [plugins]
     endpoint = awscli_plugin_endpoint
+
+If you are configuring AWS CLI v2 to use the endpoint plugin, you will need to add an additional configuration setting, replacing "site-packages-path" with the installation path noted above:
+
+    $ aws configure set plugins.cli_legacy_plugin_path site-packages-path
+
+The configuration file will now have two values in the plugin section:
+
+    [plugins]
+    endpoint = awscli_plugin_endpoint
+    cli_legacy_plugin_path = site-packages-path
 
 To add endpoint configure to a profile(assuming you have a **local** profile), you can run:
 
