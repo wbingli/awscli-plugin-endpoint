@@ -1,3 +1,4 @@
+import os
 import warnings
 
 ENDPOINT_URL = 'endpoint_url'
@@ -21,7 +22,8 @@ def get_endpoint_from_profile(profile, command):
     endpoint = None
     if command in profile:
         if ENDPOINT_URL in profile[command]:
-            endpoint = profile[command][ENDPOINT_URL]
+            endpoint_url_tempalte = profile[command][ENDPOINT_URL]
+            endpoint = os.path.expandvars(endpoint_url_tempalte)
     return endpoint
 
 def set_endpoint_from_profile(parsed_args, **kwargs):
