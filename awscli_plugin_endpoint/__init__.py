@@ -43,7 +43,7 @@ def set_verify_from_profile(parsed_args, **kwargs):
     # By default verify_ssl is set to true
     # if --no-verify-ssl is specified, parsed_args.verify_ssl is False
     # so keep it
-    if verify_ssl:
+    if verify_ssl or verify_ssl is None:
         session = kwargs['session']
         # Set profile to session so we can load profile from config
         if parsed_args.profile:
